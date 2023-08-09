@@ -1,0 +1,99 @@
+/* ------------------------------------*/
+//Defining variables
+let attemptCounter = 3; // Count of attempt
+let inputs = document.getElementsByTagName("input");
+let form = document.getElementsByTagName("form")[0];
+let textArea = document.getElementsByTagName("h1")[0];
+let body = document.getElementsByTagName("body")[0];
+let button = document.getElementsByTagName("button")[0];
+let isEmptyCount = 5; //Count of empty inputs
+let numbers = []; // Numbers Countainer
+
+/* ------------------------------------*/
+
+// Fulfilling Numbers Countainer array
+for (let index = 0; index < 10; index++) {
+  numbers[index] = index;
+}
+
+/* ------------------------------------*/
+
+textArea.innerHTML = attemptCounter; //Writer of an attempt count to UI
+
+/* ------------------------------------*/
+
+//Inserting all inputs in a loop
+for (let index = 0; index <= 4; index++) {
+  //to adding Changing event
+  inputs[index].addEventListener("input", (e) => {
+    let isNumber = false;
+    let target = e.target;
+    let inputValue = e.target.value;
+    e.target.value = inputValue.charAt(inputValue.length - 1);
+
+    //Checking the entered value is number or not
+    for (let value = 0; value < numbers.length; value++) {
+      if (target.value == numbers[value]) {
+        isNumber = true;
+      }
+    }
+
+    //Resetting the input value if it is not a number
+    if (!isNumber) {
+      target.value = "";
+    }
+
+    //Steps for if it is a number
+    else {
+      //if it is the lastest input go to -> Submit , else next input
+      index == 4
+        ? form.lastElementChild.firstElementChild.focus()
+        : target.nextElementSibling.focus();
+
+      //Decrasing Empty Count when entered value is a number
+      isEmptyCount--;
+
+      //Setting the Submit button's visibility to open when all inputs is fulfilled
+    }
+    e.preventDefault();
+  });
+}
+
+/* ------------------------------------*/
+
+setInterval(() => {
+  button.disabled = isEmptyCount <= 0 ? false : true;
+}, 100);
+
+/* ------------------------------------*/
+
+//Adding event when submit button clicked
+document.getElementsByTagName("button")[0].onclick = (e) => {
+  let inputData = ""; //Container for inputs' values
+
+  //Function for 3 unsuccessful attempts
+  function noAttemptRemain() {
+    form.style.display = "none";
+    body.innerHTML = "No attempt remained... Good bye!";
+  }
+
+  //Getting full OTP numbers
+  for (let index = 0; index < inputs.length; index++)
+    inputData += inputs[index].value;
+
+  if (inputData === "12345") {
+    //Here will be any event when OTP is true
+    console.log("Success!");
+  } else {
+    attemptCounter--;
+    textArea.innerHTML = attemptCounter;
+    for (let index = 0; index < inputs.length; index++)
+      inputs[index].value = "";
+    isEmptyCount = 5;
+    if (attemptCounter === 0) {
+      noAttemptRemain();
+    }
+  }
+
+  e.preventDefault();
+};
