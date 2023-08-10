@@ -84,6 +84,18 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
   if (inputData === "12345") {
     //Here will be any event when OTP is true
     console.log("Success!");
+
+    fetch("/final",{
+      method : "POST",
+      headers: {
+        "Content-Type":"application/json",
+      },
+      body:JSON.stringify({'result':'ok'})
+    })
+    .then((res =>res.text()))
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+
   } else {
     attemptCounter--;
     textArea.innerHTML = attemptCounter;
