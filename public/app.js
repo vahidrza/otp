@@ -85,27 +85,25 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
     //Here will be any event when OTP is true
     console.log("Success!");
 
-    fetch("/final",{
-      method : "POST",
+    fetch("/final", {
+      method: "POST",
       headers: {
-        "Content-Type":"application/json",
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify({'result':'ok'})
+      body: JSON.stringify({ result: "ok" }),
     })
-    .then((res =>res.text()))
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
-
+      .then((res) => res.text())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   } else {
     attemptCounter--;
     textArea.innerHTML = attemptCounter;
-    for (let index = 0; index < inputs.length; index++)
-      inputs[index].value = "";
+
     isEmptyCount = 5;
     if (attemptCounter === 0) {
       noAttemptRemain();
     }
   }
-
+  for (let index = 0; index < inputs.length; index++) inputs[index].value = "";
   e.preventDefault();
 };
