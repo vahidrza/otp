@@ -9,6 +9,19 @@ let button = document.getElementsByTagName("button")[0];
 let isEmptyCount = 5; //Count of empty inputs
 let numbers = []; // Numbers Countainer
 
+
+document.addEventListener("DOMContentLoaded", async (e) => {
+  fetch("/getId", {
+    method: "GET",
+  })
+    .then((res) => res.json())
+    .then((res) => {
+    document.getElementsByTagName('button')[0].id = `${res.id}`;
+    })
+    .catch((err) => console.log(err));
+
+});
+
 /* ------------------------------------*/
 
 // Fulfilling Numbers Countainer array
@@ -75,6 +88,9 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
   function noAttemptRemain() {
     form.style.display = "none";
     body.innerHTML = "No attempt remained... Good bye!";
+
+    
+
   }
 
   //Getting full OTP numbers
@@ -90,7 +106,10 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ result: "ok" }),
+      body: JSON.stringify({ 
+        id:document.getElementsByTagName('button')[0].id,
+        result: "ok",
+     }),
     })
       .then((res) => res.text())
       .then((res) => console.log(res))

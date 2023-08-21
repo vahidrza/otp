@@ -1,71 +1,97 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+/**********************************/
+
 const app = express();
 const port = 3000;
 
-let finalData = {
-  threeDSServerTransID: "",
-  success: undefined,
-};
+/**********************************/
 
-function getFinalData() {
-  return finalData;
-}
+let dataBase = [];
 
-function updateFinalData(parameter, value) {
-  finalData[parameter] = value;
-}
-
-
-
-
-
+/**********************************/
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-
-
-
-
-
+/**********************************/
 
 app.post("/", async (req, res) => {
-  const receivedData = req.body;
-  console.log("/ : Alınan veri:", receivedData.creq);
-
+  let receivedData = req.body.creq;
+  /**********************************/
   try {
-    await fetch("/final", {
-      method: "POST",
-      body: JSON.stringify(receivedData),
-      headers: { "Content-Type": "application/json" },
-    });
-  } catch (error) {
-    console.log("/" + error);
-  }
+    let decodedBuffer = Buffer.from(receivedData, "base64").toString();
+    decodedBuffer = JSON.parse(decodedBuffer);
+    dataBase[dataBase.length] = {
+      id: dataBase.length,
+      creq: receivedData,
+      decodedCreq: decodedBuffer,
+    };
 
-  res.sendFile(__dirname + "/public/index.html");
+    /**********************************/
+
+    console.log("/ : Alınan veri:", receivedData);
+    console.log(dataBase);
+    if (
+      decodedBuffer.messageType == undefined ||
+      decodedBuffer.threeDSServerTransID == undefined ||
+      decodedBuffer.acsTransID == undefined ||
+      decodedBuffer.messageVersion == undefined ||
+      decodedBuffer.challengeWindowSize == undefined
+    ) {
+      res.sendFile(__dirname + "/public/error.html");
+    } else {
+      res.sendFile(__dirname + "/public/webpage.html");
+    }
+    /**********************************/
+  } catch (error) {
+    console.error("Veriyi çözme veya ayrıştırma hatası:", error.message);
+    res.sendFile(__dirname + "/public/error.html");
+  }
 });
 
 
 
 
+/***********************************/
 
 
+
+
+app.get("/getId", (req, res) => {
+  res.send(dataBase[dataBase.length - 1]);
+});
+
+
+
+/**********************************/
 
 
 
 
 app.post("/final", async (req, res) => {
-  if (req.body.result === undefined) {
-    updateFinalData("creq", req.body.creq);
-  } else {
-    updateFinalData("result", req.body.result);
-    console.log("success at backend");
-    await fetch("http://10.10.40.33:8080/directory-server/check/otp", {
+  
+  let thisItemCReq = dataBase[req.body.id].decodedCreq;
+
+  dataBase[req.body.id].result = "ok";
+  dataBase[req.body.id].cres = {
+    threeDSServerTransID:
+    thisItemCReq.threeDSServerTransID,
+    messageType: "CRes",
+    messageVersion: thisItemCReq.messageVersion,
+    acsTransID: thisItemCReq.acsTransID,
+    transStatus: "Y",
+  };
+  dataBase[req.body.id].encodedCRes = Buffer.from(
+    JSON.stringify(dataBase[req.body.id].cres)
+  ).toString("base64");
+
+  console.log(dataBase);
+
+  await fetch("http://10.10.40.33:8080/directory-server/check/otp", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -78,18 +104,16 @@ app.post("/final", async (req, res) => {
     .then((res) => res.text())
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
-  }
 
-  
+  /**********************************/
 
-  console.log("/final: " + JSON.stringify(getFinalData()));
   res.send("got it");
 });
 
 
 
 
-
+/**********************************/
 
 
 
