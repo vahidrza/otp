@@ -4,24 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./reset.css" />
   </head>
   <body>
-    <form action="">
-      <div>
-        <input type="text" />
-        <input type="text" />
-        <input type="text" />
-        <input type="text" />
-        <input type="text" />
+    <div id="container">
+      <div id="containerLeftSide">
+        <img
+          src="https://acs.guavapayment.com/acs/api/3ds2/img/phone.png"
+          alt=""
+        />
       </div>
-      <div>
-        <button disabled type="submit">Submit</button>
-        <h1></h1>
+      <div id="containerRightSide">
+        <div id="containerRightSideContainer">
+          <div id="logos">
+            <img
+              src="https://acs.guavapayment.com/acs/api/3ds2/img/myguava.png"
+              alt=""
+            />
+            <img
+              src="https://acs.guavapayment.com/acs/api/3ds2/img/ms.png"
+              alt=""
+            />
+          </div>
+          <div id="header">E-commerce Test Stage</div>
+          <div id="info">Please Enter OTP</div>
+
+          <div id="formContainer">
+            <form action="">
+              <div id="inputContainer" >
+                <input class="input" placeholder="*" type="text" />
+                <input class="input" placeholder="*" type="text" />
+                <input class="input" placeholder="*" type="text" />
+                <input class="input" placeholder="*" type="text" />
+                <input class="input" placeholder="*" type="text" />
+              </div>
+              <div id="buttonContainer" >
+                <button disabled type="submit">Submit</button>
+                <h1></h1>
+              </div>
+            </form>
+            <span id=""></span>
+          </div>
+        </div>
       </div>
-    </form>
-    <span id="" ></span>
+    </div>
+
     <script src="./app.js"></script>
   </body>
 </html>

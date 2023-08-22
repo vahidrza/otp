@@ -1,5 +1,6 @@
-body {
-    background-image: url('/public/assets/img/bg.png');
+/* body {
+    background-image: url('https://acs.guavapayment.com/acs/api/3ds2/img/bg.png');
+    background-repeat: no-repeat;
     display: flex;
     min-height: 90vh;
     justify-content: center;
@@ -13,27 +14,173 @@ form {
     align-items: center;
 }
 
-div:last-child {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin-top: 15px;
-    justify-content: center;
-}
 
-input {
-    width: 25px;
-    height: 20px;
-    border-radius: 3px;
-}
 
-button {
-    cursor: pointer;
-    margin-right: 10px;
-}
+
 
 h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Poppins:wght@300&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F2F6FA;
+    background-image: url('https://acs.guavapayment.com/acs/api/3ds2/img/bg.png');
+    background-repeat: no-repeat;
+}
+
+#container {
+    min-width: 100%;
+    max-height: 78%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#containerLeftSide {
+    min-width: 50%;
+}
+
+#containerRightSide {
+    min-width: 50%;
+}
+
+#containerLeftSide>img {
+    width: 390px;
+    height: 507px;
+    margin-left: 237px;
+    /* margin-left: 14.8125em; */
+    /* margin-left: 29.7%; */
+    margin-left: 19%;
+    margin-top: 184px;
+}
+
+#containerRightSideContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 84px;
+    max-width: 461px;
+    border-radius: 1rem;
+    min-height: 761px;
+    margin-bottom: 2rem;
+    background-color: #EDF0F5;
+    border: 1px solid #e5e5ea;
+}
+
+#logos {
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-right: 2rem;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#logos>img:first-child {
+    width: 148px;
+    height: 40px;
+}
+
+#logos>img:last-child {
+    width: 150px;
+    height: 25px;
+}
+
+#header,
+#info {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+
+#header {
+    padding-top: 7rem;
+    color: #003f47;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+#info {
+    padding-top: 5rem;
+    color: #003f47;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding-bottom: 1.5rem;
+}
+
+form {
+    max-width: 396px;
+}
+
+#formContainer {
+    margin-left: 2rem;
+}
+
+#inputContainer {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    background-color: #FBFCFD;
+    border-radius: 1rem;
+    min-height: 6rem;
+}
+
+input {
+    margin-left: 1.17rem;
+    width: 48px;
+    text-align: center;
+    height: 60px;
+    border-radius: 0.5rem;
+    border: 1px solid #9394a1;
+    color: #1a1a18;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.input:focus {
+    border: 1px solid #BAF400 !important;
+}
+
+button:enabled {
+    cursor: pointer;
+    background: #baf400;
+    border-radius: 0.75rem;
+    width: 100%;
+    height: 3.5rem;
+    border: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+button:focus {
+    border: 0 !important;
+}
+
+button:disabled {
+    background-color: #FBFCFD;
+    border-radius: 0.75rem;
+    width: 100%;
+    height: 3.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: 0;
+    color: #8E929A;
+}
+
+#buttonContainer {
+    padding-top: 2rem;
+    width: 104.8%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+#buttonContainer>h1 {
+    margin-left: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #368ADE;
 }
