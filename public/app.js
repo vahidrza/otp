@@ -9,17 +9,15 @@ let button = document.getElementsByTagName("button")[0];
 let isEmptyCount = 5; //Count of empty inputs
 let numbers = []; // Numbers Countainer
 
-
 document.addEventListener("DOMContentLoaded", async (e) => {
   fetch("/getId", {
     method: "GET",
   })
     .then((res) => res.json())
     .then((res) => {
-    document.getElementsByTagName('button')[0].id = `${res.id}`;
+      document.getElementsByTagName("button")[0].id = `${res.id}`;
     })
     .catch((err) => console.log(err));
-
 });
 
 /* ------------------------------------*/
@@ -86,24 +84,23 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
 
   //Function for 3 unsuccessful attempts
   function noAttemptRemain() {
-    
-
     fetch("/unsuccess", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ 
-        id:document.getElementsByTagName('button')[0].id,
+      body: JSON.stringify({
+        id: document.getElementsByTagName("button")[0].id,
         result: "notok",
-     }),
+      }),
     })
-      // .then((res) => res.text())
-      // .then((res) => console.log(res))
+      .then((res) => res.json())
+      .then((res) => {
+        document.forms[0].action = res.notificationUrl;
+        inputs[5].value = res.cres;
+        document.forms[0].submit();
+      })
       .catch((err) => console.log(err));
-
-      form.style.display = "none";
-    body.innerHTML = "No attempt remained... Try Again!";
   }
 
   //Getting full OTP numbers
@@ -116,12 +113,17 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ 
-        id:document.getElementsByTagName('button')[0].id,
+      body: JSON.stringify({
+        id: document.getElementsByTagName("button")[0].id,
         result: "ok",
-     }),
+      }),
     })
-      .then((res) => res.text())
+      .then((res) => res.json())
+      .then((res) => {
+        document.forms[0].action = res.notificationUrl;
+        inputs[5].value = res.cres;
+        document.forms[0].submit();
+      })
       // .then((res) => console.log(res))
       .catch((err) => console.log(err));
   } else {
@@ -135,8 +137,5 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
   }
   for (let index = 0; index < inputs.length; index++) inputs[index].value = "";
 
-  //Here will be any event (fetch) when OTP is true
-  // console.log("Success!");
-  
   e.preventDefault();
 };
