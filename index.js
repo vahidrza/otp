@@ -29,7 +29,7 @@ const databaseDirectory = winston.createLogger({
   level: 'info',
   format: winston.format.json(),
   transports: [
-    new winston.transports.File({ filename: path.join(databaseFolder,`${new Date().toISOString().replace(/:/g, '-')}.json`) })
+    new winston.transports.File({ filename: path.join(databaseFolder,`${new Date().toISOString().replace(/:/g, '-')}.log`) })
   ]
 });
 
@@ -182,7 +182,7 @@ app.post("/final", async (req, res) => {
       logger.info(new Date() + "------"  + "Successful Response converted to text : " + JSON.stringify(restext));
     })
     .catch((err) => {
-      logger.error(new Date() + "------"  + "Request has been sent to Backend, Result : Unsuccessful");
+      logger.error(new Date() + "------"  + "Request couldn't sent to Backend, Result : Unsuccessful");
       logger.error(new Date() + "------"  + "Unsuccessful Response converted to text : " + JSON.stringify(err));
     }
     );
@@ -222,6 +222,7 @@ app.post("/unsuccess", async (req, res) => {
     messageVersion: thisItemCReq.messageVersion,
     acsTransID: thisItemCReq.acsTransID,
     transStatus: "N",
+    challengeCompletionInd : "Y",
   };
   dataBase[req.body.id].encodedCRes = Buffer.from(
     JSON.stringify(dataBase[req.body.id].cres)
@@ -245,7 +246,7 @@ app.post("/unsuccess", async (req, res) => {
     logger.info(new Date() + "------"  + "Successful Response converted to text : " + JSON.stringify(restext));
   })
   .catch((err) => {
-    logger.error(new Date() + "------"  + "Request has been sent to Backend, Result : Unsuccessful");
+    logger.error(new Date() + "------"  + "Request couldn't sent to Backend, Result : Unsuccessful");
     logger.error(new Date() + "------"  + "Unsuccessful Response converted to text : " + JSON.stringify(err));
   }
   );

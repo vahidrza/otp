@@ -37,15 +37,21 @@
           <div id="info">Please Enter OTP</div>
 
           <div id="formContainer">
-            <form action="">
-              <div id="inputContainer" >
+            <form
+              action=""
+              enctype="application/x-www-form-urlencoded"
+              id="authForm"
+              name="authForm"
+              method="post"
+            >
+              <div id="inputContainer">
                 <input class="input" placeholder="*" type="text" />
                 <input class="input" placeholder="*" type="text" />
                 <input class="input" placeholder="*" type="text" />
                 <input class="input" placeholder="*" type="text" />
                 <input class="input" placeholder="*" type="text" />
               </div>
-              <div id="buttonContainer" >
+              <div id="buttonContainer">
                 <button disabled type="submit">Submit</button>
                 <h1></h1>
               </div>

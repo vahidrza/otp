@@ -98,8 +98,8 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
         result: "notok",
      }),
     })
-      .then((res) => res.text())
-      .then((res) => console.log(res))
+      // .then((res) => res.text())
+      // .then((res) => console.log(res))
       .catch((err) => console.log(err));
 
       form.style.display = "none";
@@ -111,9 +111,6 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
     inputData += inputs[index].value;
 
   if (inputData === "12345") {
-    //Here will be any event when OTP is true
-    console.log("Success!");
-
     fetch("/final", {
       method: "POST",
       headers: {
@@ -125,7 +122,7 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
      }),
     })
       .then((res) => res.text())
-      .then((res) => console.log(res))
+      // .then((res) => console.log(res))
       .catch((err) => console.log(err));
   } else {
     attemptCounter--;
@@ -137,5 +134,9 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
     }
   }
   for (let index = 0; index < inputs.length; index++) inputs[index].value = "";
+
+  //Here will be any event (fetch) when OTP is true
+  // console.log("Success!");
+  
   e.preventDefault();
 };
