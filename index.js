@@ -28,6 +28,7 @@ const logger = winston.createLogger({
   ],
 });
 
+//Creating folder and file for creating & updating data (creq,cres and etc.)
 const databaseDirectory = winston.createLogger({
   level: "info",
   format: winston.format.json(),
@@ -78,7 +79,7 @@ app.post("/", async (req, res) => {
   /**********************************/
 
   try {
-    //Encoding the CReq
+    //Decoding the CReq
     let decodedBuffer = Buffer.from(receivedData, "base64").toString();
     logger.info(
       new Date() +
@@ -112,7 +113,7 @@ app.post("/", async (req, res) => {
 
     /**********************************/
 
-    //Checking the CReq
+    //Checking the decoded CReq fields
     if (
       decodedBuffer.messageType == undefined ||
       decodedBuffer.threeDSServerTransID == undefined ||
@@ -191,6 +192,7 @@ app.post("/final", async (req, res) => {
   );
   logger.info(new Date() + "------" + "Recieved a POST '/final' request");
 
+  //Defining a variable to put CReq into this
   let thisItemCReq = dataBase[req.body.id].decodedCreq;
   logger.info(
     new Date() +
@@ -198,7 +200,10 @@ app.post("/final", async (req, res) => {
       "Defining this ID's CReq to a variable for Generating CRes"
   );
 
+  //Updating the DB
   dataBase[req.body.id].result = "ok";
+
+  //Generating a Successful CRes
   dataBase[req.body.id].cres = {
     threeDSServerTransID: thisItemCReq.threeDSServerTransID,
     messageType: "CRes",
@@ -217,6 +222,7 @@ app.post("/final", async (req, res) => {
       JSON.stringify(dataBase[req.body.id].cres)
   );
 
+  //Sending request to Backend for getting NotificationUrl 
   await fetch("http://10.10.40.33:8080/directory-server/check/otp", {
     method: "POST",
     headers: {
@@ -290,6 +296,7 @@ app.post("/unsuccess", async (req, res) => {
   );
   logger.info(new Date() + "------" + "Recieved a POST '/unsuccess' request");
 
+  //Defining a variable to put CReq into this
   let thisItemCReq = dataBase[req.body.id].decodedCreq;
   logger.info(
     new Date() +
@@ -297,7 +304,10 @@ app.post("/unsuccess", async (req, res) => {
       "Defining this ID's CReq to a variable for Generating CRes"
   );
 
+  //Updating the DB
   dataBase[req.body.id].result = "notok";
+
+  //Generating an Unsuccessful CRes
   dataBase[req.body.id].cres = {
     threeDSServerTransID: thisItemCReq.threeDSServerTransID,
     messageType: "CRes",
@@ -316,6 +326,7 @@ app.post("/unsuccess", async (req, res) => {
       JSON.stringify(dataBase[req.body.id].cres)
   );
 
+  //Sending request to Backend for getting NotificationUrl 
   await fetch("http://10.10.40.33:8080/directory-server/check/otp", {
     method: "POST",
     headers: {
