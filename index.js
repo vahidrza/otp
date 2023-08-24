@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const winston = require("winston");
 const path = require("path");
+const fetch = require("node-fetch-commonjs");
 
 /**********************************/
 

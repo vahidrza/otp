@@ -159,6 +159,7 @@ button:focus {
 }
 
 button:disabled {
+    cursor: context-menu !important;
     background-color: #FBFCFD;
     border-radius: 0.75rem;
     width: 100%;
