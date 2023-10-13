@@ -14,174 +14,246 @@ form {
     align-items: center;
 }
 
-
-
-
-
 h1 {
     display: flex;
     justify-content: center;
     align-items: center;
 } */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Poppins:wght@300&display=swap");
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #F2F6FA;
-    background-image: url('https://acs.guavapayment.com/acs/api/3ds2/img/bg.png');
-    background-repeat: no-repeat;
+  font-family: "Inter", sans-serif;
+  background-color: #f2f6fa;
+  background-image: url("https://acs.guavapayment.com/acs/api/3ds2/img/bg.png");
+  background-repeat: no-repeat;
 }
 
 #container {
-    min-width: 100%;
-    max-height: 78%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  min-width: 100%;
+  max-height: 78%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 2rem;
 }
 
 #containerLeftSide {
-    min-width: 50%;
+  min-width: 50%;
+  text-align: center;
 }
 
 #containerRightSide {
-    min-width: 50%;
+  min-width: 50%;
 }
 
-#containerLeftSide>img {
-    width: 390px;
-    height: 507px;
-    margin-left: 237px;
-    /* margin-left: 14.8125em; */
-    /* margin-left: 29.7%; */
-    margin-left: 19%;
-    margin-top: 184px;
+#containerLeftSide > img {
+  width: 80%;
+  max-height: 500px;
+  object-fit: contain;
+  margin-top: 184px;
 }
 
 #containerRightSideContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 84px;
-    max-width: 461px;
-    border-radius: 1rem;
-    min-height: 761px;
-    margin-bottom: 2rem;
-    background-color: #EDF0F5;
-    border: 1px solid #e5e5ea;
+  display: flex;
+  flex-direction: column;
+  margin-top: 84px;
+  max-width: 461px;
+  border-radius: 1rem;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  margin-bottom: 2rem;
+  background-color: #edf0f5;
+  border: 1px solid #e5e5ea;
 }
 
 #logos {
-    padding-left: 2rem;
-    padding-top: 2rem;
-    padding-right: 2rem;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  padding: 0 2rem;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-#logos>img:first-child {
-    width: 148px;
-    height: 40px;
+#logos > img:first-child {
+  width: 148px;
+  height: 40px;
 }
 
-#logos>img:last-child {
-    width: 150px;
-    height: 25px;
+#logos > img:last-child {
+  width: 150px;
+  height: 25px;
 }
 
 #header,
 #info {
-    text-align: center;
-    font-family: 'Inter', sans-serif;
+  text-align: center;
+  font-family: "Inter", sans-serif;
 }
 
 #header {
-    padding-top: 7rem;
-    color: #003f47;
-    font-size: 1.8rem;
-    font-weight: 700;
+  padding-top: 5rem;
+  color: #003f47;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 #info {
-    padding-top: 5rem;
-    color: #003f47;
-    font-size: 1.3rem;
-    font-weight: 600;
-    padding-bottom: 1.5rem;
+  padding-top: 4rem;
+  color: #003f47;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding-bottom: 1.5rem;
 }
 
 form {
-    max-width: 396px;
+  max-width: 396px;
 }
 
 #formContainer {
-    margin-left: 2rem;
+  margin: 0 2rem;
 }
 
 #inputContainer {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    background-color: #FBFCFD;
-    border-radius: 1rem;
-    min-height: 6rem;
+  margin-top: 2rem;
+  background-color: #fbfcfd;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
 }
 
 input {
-    margin-left: 1.17rem;
-    width: 48px;
-    text-align: center;
-    height: 60px;
-    border-radius: 0.5rem;
-    border: 1px solid #9394a1;
-    color: #1a1a18;
-    font-size: 18px;
-    font-weight: 700;
+  width: calc((100% - 5rem) / 5);
+  text-align: center;
+  height: 60px;
+  border-radius: 0.5rem;
+  border: 1px solid #9394a1;
+  color: #1a1a18;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .input:focus {
-    border: 1px solid #BAF400 !important;
+  border: 1px solid #baf400 !important;
 }
 
 button:enabled {
-    cursor: pointer;
-    background: #baf400;
-    border-radius: 0.75rem;
-    width: 100%;
-    height: 3.5rem;
-    border: 0;
-    font-size: 1.1rem;
-    font-weight: 700;
+  cursor: pointer;
+  background: #baf400;
+  border-radius: 0.75rem;
+  width: 100%;
+  height: 3.5rem;
+  border: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 button:focus {
-    border: 0 !important;
+  border: 0 !important;
 }
 
 button:disabled {
-    cursor: context-menu !important;
-    background-color: #FBFCFD;
-    border-radius: 0.75rem;
-    width: 100%;
-    height: 3.5rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    border: 0;
-    color: #8E929A;
+  cursor: context-menu !important;
+  background-color: #fbfcfd;
+  border-radius: 0.75rem;
+  width: 100%;
+  height: 3.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: 0;
+  color: #8e929a;
 }
 
 #buttonContainer {
-    padding-top: 2rem;
-    width: 104.8%;
-    display: flex;
-    flex-direction: row;
-    margin-top: 2rem;
-    justify-content: center;
+  padding-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  justify-content: center;
 }
 
-#buttonContainer>h1 {
-    margin-left: 0.5rem;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #368ADE;
+#buttonContainer > h1 {
+  margin-left: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #368ade;
+}
+
+@media (max-width: 420px) {
+  /* mobile */
+
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    background-image: url("https://acs.guavapayment.com/acs/api/3ds2/img/bg-mobile.png");
+  }
+
+  #containerLeftSide {
+    display: none;
+  }
+
+  #logos {
+    padding: 0;
+  }
+
+  #logos img:first-child {
+    width: 120px;
+    height: auto;
+  }
+
+  #logos img:last-child {
+    width: 130px;
+    height: auto;
+  }
+
+  #containerRightSide {
+    width: 90% !important;
+    max-width: 90% !important;
+  }
+
+  #containerRightSideContainer {
+    background: transparent;
+    border: none;
+    min-height: 0;
+    margin-top: 24px;
+  }
+
+  #containerRightSideContext {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    background-color: #edf0f5;
+    border: 1px solid #e5e5ea;
+    padding: 40px 16px 60px;
+  }
+
+  #header {
+    padding-top: 0;
+    font-size: 1.5rem;
+  }
+
+  #info {
+    padding-top: 3rem;
+  }
+
+  #formContainer {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 421px) and (max-width: 768px) {
+  #containerLeftSide {
+    width: 30%;
+    min-width: 30%;
+  }
+
+  #containerLeftSide img {
+    width: 100%;
+  }
 }
