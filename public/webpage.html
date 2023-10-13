@@ -10,8 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Poppins:wght@300&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div id="container">
@@ -33,34 +33,36 @@
               alt=""
             />
           </div>
-          <div id="header">E-commerce Test Stage</div>
-          <div id="info">Please Enter OTP</div>
+          <div id="containerRightSideContext">
+            <div id="header">E-commerce Test Stage</div>
+            <div id="info">Please Enter OTP</div>
 
-          <div id="formContainer">
-            <form
-              action=""
-              enctype="application/x-www-form-urlencoded"
-              id="authForm"
-              name="authForm"
-              method="post"
-            >
-              <div id="inputContainer">
-                <input class="input" placeholder="*" type="text" />
-                <input class="input" placeholder="*" type="text" />
-                <input class="input" placeholder="*" type="text" />
-                <input class="input" placeholder="*" type="text" />
-                <input class="input" placeholder="*" type="text" />
-              </div>
-              <input 
-                type="hidden" 
-                name="cres"
-                id="cres">
-              <div id="buttonContainer">
-                <button disabled type="submit">Submit</button>
-                <h1></h1>
-              </div>
-            </form>
-            <span id=""></span>
+            <div id="formContainer">
+              <form
+                action=""
+                enctype="application/x-www-form-urlencoded"
+                id="authForm"
+                name="authForm"
+                method="post"
+              >
+                <div id="inputContainer">
+                  <input class="input" placeholder="*" type="text" />
+                  <input class="input" placeholder="*" type="text" />
+                  <input class="input" placeholder="*" type="text" />
+                  <input class="input" placeholder="*" type="text" />
+                  <input class="input" placeholder="*" type="text" />
+                </div>
+                <input type="hidden" name="cres" id="cres" />
+                <span id="attempts"
+                  >Remaining attempts:
+                  <h1></h1
+                ></span>
+                <div id="buttonContainer">
+                  <button disabled type="submit">Submit</button>
+                </div>
+              </form>
+              <span id=""></span>
+            </div>
           </div>
         </div>
       </div>
