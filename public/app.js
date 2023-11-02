@@ -129,6 +129,7 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
   } else {
     attemptCounter--;
     textArea.innerHTML = attemptCounter;
+
     isEmptyCount = 5;
     if (attemptCounter === 0) {
       noAttemptRemain();
@@ -137,6 +138,7 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
 
   button.disabled = true;
   isEmptyCount = 5;
+
   for (let index = 0; index < inputs.length; index++) inputs[index].value = "";
 
   e.preventDefault();
