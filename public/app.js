@@ -96,9 +96,14 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
     })
       .then((res) => res.json())
       .then((res) => {
+        
         document.forms[0].action = res.notificationUrl;
         inputs[5].value = res.cres;
-        document.forms[0].submit();
+        for (let index = 0; index < inputs.length-1; index++) {
+          inputs[index].disabled = true;          
+        }
+        document.forms[0].submit()
+        
       })
       .catch((err) => console.log(err));
   }
@@ -122,6 +127,9 @@ document.getElementsByTagName("button")[0].onclick = (e) => {
       .then((res) => {
         document.forms[0].action = res.notificationUrl;
         inputs[5].value = res.cres;
+        for (let index = 0; index < inputs.length-1; index++) {
+          inputs[index].disabled = true;          
+        }
         document.forms[0].submit();
       })
       // .then((res) => console.log(res))
